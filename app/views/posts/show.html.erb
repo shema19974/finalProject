@@ -7,18 +7,9 @@
     <%= @post.content %>
     <%= image_tag @post.image.url, size: "300x300" unless @post.image.url.blank? %>
   </div>
-  <div style="margin-left: 20px;">
-    <h4>List of Comments(Contents below are important)</4>
 
-    <!-- Get an HTML id of this comments_area and update only the part of that div -->
-    <div id="comments_area">
-      <!-- Render to display the posted comment list on the blogs detail page -->
-      <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
-    </div>
+  <%= render 'comments/comment'%>
 
-    <!-- Render to display the comment field on the blogs detail page -->
-    <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
-  </div>
   <div class="card-footer">
     <%= link_to 'Edit', edit_post_path(@post), class:"btn btn-warning"%> |
     <%= link_to 'Back', posts_path, class:"btn btn-secondary" %>

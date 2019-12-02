@@ -1,31 +1,33 @@
 class CommentsController < ApplicationController
-  def create
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(comment_params)
-    # Change format according to client request
-    respond_to do |format|
-      if @comment.save
-        format.js { render :index }
-      else
-        format.html { redirect_to post_path(@post), notice: 'You can not make a comment with blank. Please write...' }
-      end
-    end
+before_action :find_post
+ before_action :find_comment, only: [:destroy, :edit , :update]
+def create
+@comment = @post.comments.create(params[:comment].permit(:content))
+@comment.save
+if @comment.save
+  redirect_to post_path(@post)
+else
+  redirect_to post_path(@post)
+end
+end
+def destroy
+@comment.destroy
+redirect_to post_path(@post)
+end
+def edit
+end
+def update
+if @comment.update(params[:comment].permit(:content))
+  redirect_to post_path(@post)
+  else
+    render 'edit'
   end
-
-  def show
-    
-  end
-
-  def destroy
-    @post = Post.find(params[:post_id])
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-      redirect_to @post
-  end
-
-  private
-  # Strong Parameter
-  def comment_params
-    params.require(:comment).permit(:post_id, :content)
-  end
+end
+private
+def find_post
+  @post = Post.find(params[:post_id])
+end
+def find_comment
+  @comment = @post.comments.find(params[:id])
+end
 end

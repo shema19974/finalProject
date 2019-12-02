@@ -1,34 +1,4 @@
-<div class="container">
-  <%= form_with(model: post, local: true) do |form| %>
-    <% if post.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-        <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="form-group">
-      <%= form.label :title %>
-      <%= form.text_field :title, class:"form-control", style:"width: 40rem" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :content %>
-      <%= form.text_area :content, class:"form-control", style:"width: 40rem" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :image %>
-      <%= form.file_field :image, clss:"form-control-file" %>
-    </div>
-    <div class="actions">
-      <%= form.submit class:"btn btn-primary float-left", style:" margin-right: 10px" %>
-    </div>
-  <% end %>
-
-</div>
+<%= form_for ([@post, @post.comments.build]) do |f| %>
+  <%= f.text_area :content, class:"single-input", placeholder:"enter comment"%>
+  <%= f.submit "post comment", class:"genric-btn info-border circle" %>
+    <%end%>
