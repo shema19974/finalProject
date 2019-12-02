@@ -1,0 +1,11 @@
+<ul>
+  <% comments.each do |comment| %>
+    <% if comment.id.present? %>
+      <li>
+        <p><%= comment.content %></p>
+        Commented_by <small><%= comment.post.employee.first_name + " "+ comment.post.employee.last_name %></small> at <small><%= comment.updated_at%></small>
+
+      </li>
+    <% end %>
+  <% end %>
+</ul>

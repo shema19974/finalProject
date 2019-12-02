@@ -1,0 +1,10 @@
+<div class="card post-card">
+  <div class="card-body">
+    <p><strong>Name:</strong><%= @department.name %></p>
+    <p><strong>Name:</strong><%= @department.short_name %></h6></p>
+  </div>
+  <div class="card-footer">
+    <%= link_to 'Edit', edit_department_path(@department) %> |
+    <%= link_to 'Back', departments_path %>
+  </div>
+</div>

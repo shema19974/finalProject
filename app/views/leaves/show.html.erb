@@ -1,0 +1,12 @@
+<div class="card post-card">
+  <div class="card-header"><%= @leafe.employee.first_name %></div>
+  <div class="card-body">
+    <p><h6>Leave type: <%= @leafe.leave_type %></h6></p>
+    <p><h6>Leave Description: <%= @leafe.description %></h6></p>
+    <p><h6>Leave status: <%= @leafe.status %></h6></p>
+  </div>
+  <div class="card-footer">
+  <%= link_to 'Edit', edit_leafe_path(@leafe), class:'btn btn-secondary' %> |
+  <%= link_to 'Back', leaves_path, class:'btn btn-secondary' %>
+  </div>
+</div>

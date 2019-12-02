@@ -1,0 +1,22 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Posts</h1>
+  <%= link_to 'New Post', new_post_path, class:"btn btn-success btn", style:"margin-bottom: 10px" %>
+  <% @posts.each do |post| %>
+    <div class="card" style="width:50rem; margin-bottom: 10px;">
+      <div class="card-header"><%= post.employee.first_name %></div>
+      <div class="card-body">
+        <%= post.title %>
+        <%= post.content %>
+      <%= image_tag post.image.url, size: "300x300" unless post.image.url.blank? %>
+      </div>
+      <div class="card-footer">
+        <%= link_to 'Show', post, class:'btn btn-secondary' %>
+        <%= link_to 'Edit', edit_post_path(post), class:'btn btn-warning' %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>
+      </div>
+      </div>
+  <% end %>
+<br>
+</div>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FinalProject</title>    
+  </head>
+  <% unless employee_signed_in? %>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top " style="background-color:#ED387B">
+
+  <div class="collapse navbar-collapse links" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">  
+      <li class="nav-item">
+      <a class="nav-link" <%= link_to 'Sign up', new_employee_registration_path, style:'color: white; font-weight:bold;'%></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" <%= link_to 'Login', new_employee_session_path, style:'color: white; font-weight:bold;'%></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<%end%>
+  
+    <body class="backImage">
+
+
+  </body>
+</html>

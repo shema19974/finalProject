@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="card-header">
+    <h2>Your Profile</h2>
+    </div>
+    <div class="card-body">
+        <p><b>First name: <%= @employee.first_name%></b></p>
+        <p><b>Lastname: <%= @employee.last_name%></p></b>
+        <p><b>Email: <%= @employee.email%></p></b>
+        <p><b>Birth_date: <%= @employee.birth_date%></b></p>
+        <p><b>Admin: <%= @employee.admin%></b></p>
+    </div>
+    <div class="card-footer">
+        <%= link_to 'Back', posts_path%>
+        <%= link_to 'Edit', edit_employee_registration_url(@employee) %>
+    </div>
+</div>
