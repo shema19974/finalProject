@@ -21,7 +21,9 @@
           <%end%>
         </li>
         <li class="nav-item">
+        <% if current_employee.admin? %>
         <a class="nav-link" <%= link_to 'Departments', departments_path, style:"color:white; font-weight: bold" %></a>
+        <%end%>
         </li>
         <li class="nav-item">
             <a class="nav-link" <%= link_to 'My Profile', current_employee, style:"color:white; font-weight: bold" %></a>
