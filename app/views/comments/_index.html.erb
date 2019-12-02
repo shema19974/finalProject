@@ -4,7 +4,7 @@
       <li>
         <p><%= comment.content %></p>
         Commented_by <small><%= comment.post.employee.first_name + " "+ comment.post.employee.last_name %></small> at <small><%= comment.updated_at%></small>
-
+        <p><%= link_to 'Delete', [comment.post, comment], :method => :delete, data: { confirm: 'Are you sure?' }%></p>
       </li>
     <% end %>
   <% end %>

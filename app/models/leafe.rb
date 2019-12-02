@@ -1,5 +1,5 @@
 class Leafe < ApplicationRecord
   belongs_to :employee
   enum status: [:Waiting, :Approved, :Denied]
-  validates :description, presence:true
+  validates :description, :leave_type, presence:true
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :profiles
   get 'comments/create'
   get 'homes/index'
   resources :leaves

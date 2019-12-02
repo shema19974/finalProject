@@ -1,0 +1,26 @@
+<%= form_with(model: profile, local: true) do |form| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :upload_an_image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :employee_id, value: current_employee.id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:'btn btn-primary', style:'float:left' %>
+  </div>
+<% end %>

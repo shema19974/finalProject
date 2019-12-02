@@ -5,6 +5,7 @@ class Employee < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :posts
   has_one :leafe
+  has_one :profile
   belongs_to :department
-  validates :first_name, presence: true
+  validates :first_name, :last_name, :birth_date, presence: true
 end
