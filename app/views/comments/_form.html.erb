@@ -1,4 +1,6 @@
-<%= form_for ([@post, @post.comments.build]) do |f| %>
-    <%= f.text_area :content, class:"single-input", placeholder:"enter comment"%>
-    <%= f.submit "post comment", class:"genric-btn info-border circle" %>
-<%end%>
+<div style="margin-left:20px">
+    <%= form_for ([@post, @post.comments.build]) do |f| %>
+        <%= f.text_area :content, placeholder: 'Enter a comment...', required:'true' %><br>
+        <%= f.submit "Add comment", style:"margin-bottom:20px;"  %>
+    <%end%>
+<div>

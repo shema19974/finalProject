@@ -1,9 +1,8 @@
-<ul>
-  <% @comments.each do |comment| %>
-      <li>
-        <p><br><%= comment.content %><br>
-        <%= link_to "delete", [comment.post, comment], method: :delete, class:"genric-btn danger-border circle" %>
-        <%= link_to "edit ", edit_post_comment_path(comment.post, comment), class:"genric-btn success-border circle" %></p>
-  <% end %>
+<% @comments.each do |comment| %>
+  <div style="margin-left: 20px">
+    <p><br><%= comment.content %><br>
+    <%= link_to "delete", [comment.post, comment], method: :delete, class:"genric-btn danger-border circle" %>
+    <%= link_to "edit ", edit_post_comment_path(comment.post, comment), class:"genric-btn success-border circle" %></p>
+  </div>
+<% end %>
 <%= render 'comments/form'%>
-</ul>
