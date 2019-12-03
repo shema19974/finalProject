@@ -8,13 +8,17 @@ RSpec.feature "Department management testing", type: :feature do
     @employee= Employee.create!(first_name: "Prince",last_name: "Shema", email: 'shema@gmail.com', birth_date: Time.current, department_id: @dep.id, password: 'prince', admin:"true")
     @post = Post.create!(title: 'A good post', content: 'Tomorrow, there is a day off', employee_id: @employee.id)
   end
-  it "Validation does not pass if the content is empty" do
+  it "Create a comment" do
+    comment=Comment.create!(content:"This is a valid content", post_id:@post.id)
+    expect(comment).to be_valid
+  end
+  it "Validation content" do
     comment=Comment.create!(content:"This is a valid content", post_id:@post.id)
     expect(comment).to be_valid
   end
   it "Validation does not pass if the content is empty" do
-    comment=Comment.create!(content:"This is a valid content", post_id:@post.id)
-    expect(comment).to be_valid
+    comment=Comment.new(content:"", post_id:@post.id)
+    expect(comment).not_to be_valid
   end
 
 

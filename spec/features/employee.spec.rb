@@ -8,15 +8,10 @@ RSpec.feature "Employee management function", type: :feature do
     # Task.create!(title: 'Accountant', content: 'Balance money')
     background do
         @dep = Department.create!(name: 'Information Technology', short_name: 'IT')  
-        @employee= Employee.create!(first_name: "Prince",last_name: "Shema", email: 'shema@gmail.com', birth_date: Time.current, department_id: @dep.id, password: 'prince', admin:"true")
-    #   visit  root_path
-    #   fill_in  'Email',  with: 'shemusopri@gmail.com'
-    #   fill_in  'Password',  with: 'prince'
-    #   click_on  'Log in'
     end
     scenario "Test the create employee" do
       @employee= Employee.create!(first_name: "Prince",last_name: "Shema", email: 'shema12@gmail.com', birth_date: Time.current, department_id: @dep.id, password: 'prince', admin:"true")
- assert @employee
+      assert @employee
     end    
     scenario "list of employees" do
       @employee=Employee.all
@@ -28,8 +23,24 @@ RSpec.feature "Employee management function", type: :feature do
     expect(@employee).to be_valid
     end
     scenario "Validation of last_name" do
-      @employee= Employee.create!(first_name: "Check",last_name: "Shema", email: 'shema12@gmail.com', birth_date: Time.current, department_id: @dep.id, password: 'prince', admin:"true")       
-    
-    expect(@employee).to be_valid
+      @employee= Employee.create!(first_name: "Check",last_name: "Shema", email: 'shema12@gmail.com', birth_date: Time.current, department_id: @dep.id, password: 'prince', admin:"true")      
+      expect(@employee).to be_valid
     end
+    it "Validation does not pass if the first name is empty" do
+      @employee= Employee.new(first_name: "",last_name: "Shema", email: 'shema12@gmail.com', birth_date: Time.current, department_id: @dep.id, password: 'prince', admin:"true")
+      expect(@employee).not_to be_valid
+    end
+    it "Validation does not pass if the last name is empty" do
+      @employee= Employee.new(first_name: "Paul",last_name: "", email: 'shema12@gmail.com', birth_date: Time.current, department_id: @dep.id, password: 'prince', admin:"true")
+      expect(@employee).not_to be_valid
+    end
+    it "Validation of birth_date" do
+      @employee= Employee.new(first_name: "Paul",last_name: "Prince", email: 'shema12@gmail.com', birth_date: Time.current, department_id: @dep.id, password: 'prince', admin:"true")
+      expect(@employee).to be_valid
+    end
+    it "Validation does not pass if birth_date is empty" do
+      @employee= Employee.new(first_name: "Paul",last_name: "Prince", email: 'shema12@gmail.com', birth_date: '', department_id: @dep.id, password: 'prince', admin:"true")
+      expect(@employee).not_to be_valid
+    end
+
 end
