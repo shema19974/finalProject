@@ -3,8 +3,8 @@
     <%= @post.employee.first_name %>
   </div>
   <div class="card-body">
-    <%= @post.title %>
-    <%= @post.content %>
+    <p>Title: <%= @post.title %></p>
+    <p>Content: <%= @post.content %></p>
     <%= image_tag @post.image.url, size: "300x300" unless @post.image.url.blank? %>
   </div>
 
